@@ -1,0 +1,47 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+
+    # for default setting
+    - name: install package vim
+      yum: pkg=vim state=latest
+    - name: install package emacs
+      yum: pkg=emacs state=latest
+    - name: install package git
+      yum: pkg=git state=latest
+    - name: install package epel-release
+      yum: name=https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm
+    - name: install package htop
+      yum: pkg=htop state=latest
+
+    # for docker setting
+    - name: install package docker
+      yum: pkg=docker state=latest
+
+    # for redis setting
+    - name: install package redis
+      yum: pkg=redis state=latest
+
+    # for nginx setting
+    - name: install package nginx-release-centos
+      yum: name=http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+    - name: install package nginx
+      yum: pkg=nginx state=latest
+
+    # for php setting
+    - name: install package remi-release
+      yum: name=https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    - name: install package php72
+      yum: name={{ item }} state=latest
+      with_items:
+      - php72
+      - php72-php-fpm
+      - php72-php-gd
+      - php72-php-gmp
+      - php72-php-mbstring
+      - php72-php-opcache
+      - php72-php-pdo
+      - php72-php-pecl-memcached
+      - php72-php-pecl-msgpack
+      - php72-php-xml
