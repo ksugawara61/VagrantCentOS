@@ -4,16 +4,18 @@
   tasks:
 
     # for default setting
-#    - name: install package wget
-#      yum: pkg=wget state=latest
-#    - name: install package epel-release
-#      yum: name=https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm
-#    - name: install package htop
-#      yum: pkg=htop state=latest
+    - name: Install package vim
+      yum: pkg=vim state=latest
+    - name: Install package wget
+      yum: pkg=wget state=latest
+    - name: Install package epel-release
+      yum: name=https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm
+    - name: Install package htop
+      yum: pkg=htop state=latest
 
     # for git setting
-    - name: install package git
-      yum: pkg=git state=latest
+    - name: Install package git
+      yum: pkg=git-all state=latest
 
     # for docker setting
     - name: Add docker-ce repository
@@ -29,12 +31,6 @@
         owner: root
         group: root
         mode: '0755'
-    #  shell: curl -L https://github.com/docker/compose/releases/download/1.24.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-    #- name: Change mode to be able to run docker-compose command
-    #  file:
-    #    path: /usr/local/bin/docker-compose
-    #    state: touch
-    #    mode: 0755
     - name: Set user group to vagrant user for using docker-compose
       user:
         name: vagrant
