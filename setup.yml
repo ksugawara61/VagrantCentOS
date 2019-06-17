@@ -4,44 +4,35 @@
   tasks:
 
     # for default setting
-    - name: install package vim
-      yum: pkg=vim state=latest
-    - name: install package emacs
-      yum: pkg=emacs state=latest
+#    - name: install package wget
+#      yum: pkg=wget state=latest
+#    - name: install package epel-release
+#      yum: name=https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm
+#    - name: install package htop
+#      yum: pkg=htop state=latest
+
+    # for git setting
     - name: install package git
       yum: pkg=git state=latest
-    - name: install package epel-release
-      yum: name=https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm
-    - name: install package htop
-      yum: pkg=htop state=latest
 
     # for docker setting
-    - name: install package docker
-      yum: pkg=docker state=latest
+    - name: Add docker-ce repository
+      shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    - name: Install package docker
+      yum: pkg=docker-ce-18.06.3.ce-3.el7 state=latest
 
-    # for redis setting
-    - name: install package redis
-      yum: pkg=redis state=latest
-
-    # for nginx setting
-    - name: install package nginx-release-centos
-      yum: name=http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
-    - name: install package nginx
-      yum: pkg=nginx state=latest
-
-    # for php setting
-    - name: install package remi-release
-      yum: name=https://rpms.remirepo.net/enterprise/remi-release-7.rpm
-    - name: install package php72
-      yum: name={{ item }} state=latest
-      with_items:
-      - php72
-      - php72-php-fpm
-      - php72-php-gd
-      - php72-php-gmp
-      - php72-php-mbstring
-      - php72-php-opcache
-      - php72-php-pdo
-      - php72-php-pecl-memcached
-      - php72-php-pecl-msgpack
-      - php72-php-xml
+    # for docker-compose setting
+    - name: Install package docker-compose
+      shell: curl -L https://github.com/docker/compose/releases/download/1.24.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+    - name: Change mode to be able to run docker-compose command
+      file:
+        path: /usr/local/bin/docker-compose
+        state: touch
+        mode: 0755
+    - name: Set user group to vagrant user for using docker-compose
+      user:
+        name: vagrant
+        group: vagrant
+        groups: docker
+    - name: Restart docker deamon for setting docker-compose
+      shell: systemctl restart docker
