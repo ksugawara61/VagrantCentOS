@@ -37,12 +37,41 @@ CentOS上に以下のミドルウェアをインストールしています。
 
 ### 共有ディレクトリ
 
-ホストOSの **./dev** ディレクトリ配下で編集したファイルはゲストOS上にも共有されるように設定しています。
+ホストOSの **./dev** ディレクトリ配下で編集したファイルはゲストOSのノード上にも共有されるように設定しています。
 
 | ホストOSのディレクトリパス | ゲストOSのディレクトリパス |
 | :---: | :---: |
 | ./dev | /home/vagrant/dev |
 
+## コマンド
+
+* ノードの起動
+
+```
+$ vagrant up
+```
+
+* ノードの停止
+
+```
+$ vagrant halt
+```
+
+* ノードの再起動
+
+```
+$ vagrant destroy
+```
+
+* ノードの破棄
+
+```
+$ vagrant destroy
+```
+
 ## 参考文献
 
 1. Index of linux_centos_, https://download.docker.com/linux/centos/, Online; accessed 18-June-2019.
+2. 【Linux】タイムゾーン(Timezone)の変更 - Qiita, https://qiita.com/azusanakano/items/b39bd22504313884a7c3, Online; accessed 18-June-2019.
+3. Ansible Documentation, https://docs.ansible.com/, Online; accessed 18-June-2019.
+4. git_git_ Git Source Code Mirror - This is a publish-only repository and all pull requests are ignored. Please follow Documentation_SubmittingPatches procedure for any of your improvements., https://github.com/git/git, Online; accessed 18-June-2019.

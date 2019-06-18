@@ -4,6 +4,13 @@
   tasks:
 
     # for default setting
+    - name: Change timezone from UTC to JST
+      file:
+        src: /usr/share/zoneinfo/Asia/Tokyo
+        dest: /etc/localtime
+        owner: root
+        group: root
+        state: link
     - name: Install package vim
       yum: pkg=vim state=latest
     - name: Install package wget
