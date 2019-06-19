@@ -25,7 +25,7 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
   config.vm.synced_folder "./dev", "/home/vagrant/dev", owner: "vagrant", group: "vagrant"
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "setup.yml"
+    ansible.playbook = "playbook.yml"
   end
 
   config.vm.provider :virtualbox do |vb|
