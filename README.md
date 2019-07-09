@@ -32,9 +32,16 @@ CentOS上に以下のミドルウェアをインストールしています。
 | Vim | latest | エディタ |
 | wget | latest | ダウンローダ |
 | htop | latest | タスクマネージャ |
-| git | latest | バージョン管理ツール |
+| git | 2.22.0 | バージョン管理ツール |
 | Docker | 18.06.3-ce | コンテナツール |
 | Docker Compose | 1.24.0 | 複数のコンテナを定義・実行するツール |
+| rbenv | latest | rubyパッケージ管理 |
+| nvm | latest | nodeパッケージ管理 |
+| node | latest(LTS) | nodeパッケージ管理 |
+| MySQL | 5.7 | Relational Database |
+| Postgresql | latest | Relational Database |
+| Redis | 5.0.5 | KVS |
+| Memcached | 1.5.16 | KVS |
 
 ### 共有ディレクトリ
 

@@ -8,5 +8,6 @@
     - include: ./ansible/rbenv_setting.yml
     - include: ./ansible/node_setting.yml
     - include: ./ansible/mysql_setting.yml
+    - include: ./ansible/postgresql_setting.yml
     - include: ./ansible/redis_setting.yml
     - include: ./ansible/memcached_setting.yml

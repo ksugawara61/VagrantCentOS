@@ -1,0 +1,15 @@
+# for postgresql setting
+- block:
+  - name: Install package postgresql
+    yum:
+      name:
+      - postgresql-server
+      - postgresql-devel
+      state: latest
+  - name: Initialize postgresql database
+    shell: postgresql-setup initdb
+  - name: Run postgresql service
+    systemd:
+      name: postgresql
+      state: started
+      enabled: yes
