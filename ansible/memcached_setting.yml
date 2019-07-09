@@ -1,0 +1,10 @@
+# for memcached setting
+- block:
+  - name: Install package memcached
+    yum:
+      name: http://rpms.remirepo.net/enterprise/7/remi/x86_64//memcached-1.5.16-1.el7.remi.x86_64.rpm
+  - name: Run memcached service
+    systemd:
+      name: memcached
+      state: started
+      enabled: yes

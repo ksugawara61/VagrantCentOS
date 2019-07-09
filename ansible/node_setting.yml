@@ -1,0 +1,12 @@
+# for node setting
+- block:
+  - name: Install nvm
+    shell: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+    args:
+      warn: no
+  - name: Install lts node
+    shell: source ~/.bash_profile; \
+           nvm install --lts; \
+           nvm use --lts;
+  become: yes
+  become_user: vagrant

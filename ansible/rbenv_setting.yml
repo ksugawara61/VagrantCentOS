@@ -1,0 +1,48 @@
+# for rbenv setting
+- block:
+  - name: Install necessary packages for rbenv compile
+    yum:
+      name:
+      - gcc
+      - gcc-c++
+      - openssl-devel
+      - readline-devel
+      - libxml2-devel
+      - libxslt-devel
+      - ImageMagick
+      - ImageMagick-devel
+      - graphviz
+      state: latest
+  - block:
+    - name: Clone rbenv repository
+      git:
+        repo: git://github.com/rbenv/rbenv.git
+        dest: "{{ rbenv_root }}"
+        depth: 1
+        version: "{{ rbenv_version }}"
+    - name: Clone ruby-build repository in rbenv
+      git:
+        repo: git://github.com/rbenv/ruby-build.git
+        dest: "{{ rbenv_root }}/plugins/ruby-build"
+        depth: 1
+        version: "{{ ruby_build_version }}"
+    - name: Clone rbenv-gemset repository in rbenv
+      git:
+        repo: git://github.com/jf/rbenv-gemset.git
+        dest: "{{ rbenv_root }}/plugins/rbenv-gemset"
+        depth: 1
+    - name: Register rbenv path in bash_profile
+      shell: echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+    - name: Register rbenv init command in bash_profile
+      shell: echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+    - name: Install ruby using rbenv
+      shell: source ~/.bash_profile; \
+             rbenv install {{ ruby_version }}; \
+             rbenv global {{ ruby_version }};
+    vars:
+      rbenv_root: "~/.rbenv"
+      rbenv_version: v1.1.2
+      ruby_build_version: v20190615
+      ruby_version: 2.5.1
+    become: yes
+    become_user: vagrant
