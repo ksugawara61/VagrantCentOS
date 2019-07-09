@@ -11,10 +11,11 @@ Vagrantfileファイル内の以下の変数を変更することでサーバ（
 
 | 項目 |変数名 | 説明 |
 | :--- | :--- | :--- |
-| ノードのIP | $node_ip | ノードに設定するIPアドレス |
-| ノードのホスト名 | $node_hostname | ノードのホスト名 |
-| ノードのメモリー | $node_vm_memory | Masterノードで利用可能なメモリー数 |
-| ノードのCPU | $node_vm_cpu | Masterノードで利用可能なCPU数 |
+| ノードのIP | node_ip | ノードに設定するIPアドレス |
+| ノードのホスト名 | node_hostname | ノードのホスト名 |
+| ノードのメモリー | node_vm_memory | Masterノードで利用可能なメモリー数 |
+| ノードのCPU | node_vm_cpu | Masterノードで利用可能なCPU数 |
+| ノードのポート | node_port_array | ノードで利用するポート |
 
 ## サーバ環境
 
