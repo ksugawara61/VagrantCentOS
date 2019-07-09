@@ -1,14 +1,14 @@
-    # for default setting
-    - name: Change timezone from UTC to JST
-      file:
-        src: /usr/share/zoneinfo/Asia/Tokyo
-        dest: /etc/localtime
-        owner: root
-        group: root
-        state: link
-    - name: Install package vim
-      yum: pkg=vim state=latest
-    - name: Install package epel-release
-      yum: name=https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm
-    - name: Install package htop
-      yum: pkg=htop state=latest
+# for default setting
+- block:
+  - name: Set timezone to Asia/Tokyo
+    timezone:
+      name: Asia/Tokyo
+  - name: Install package epel-release
+    yum:
+      name: https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm
+  - name: Install standard package
+    yum:
+      name:
+      - vim
+      - htop
+      state: latest
