@@ -13,3 +13,8 @@
       name: postgresql
       state: started
       enabled: yes
+  - block:
+    - name: Create vagrant user for login postgres
+      shell: createuser --replication -sr vagrant
+    become: yes
+    become_user: postgres
