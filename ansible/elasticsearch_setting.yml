@@ -1,0 +1,24 @@
+# for elasticsearch setting
+- block:
+  - name: Download elasticsearch rpm
+    get_url:
+      url: https://artifacts.elastic.co/downloads/elasticsearch/{{ elasticsearch_rpm }}
+      dest: /usr/local/src/{{ elasticsearch_rpm }}
+      timeout: 300
+  - name: Install package elasticsearch
+    yum:
+      name: /usr/local/src/{{ elasticsearch_rpm }}
+  - name: Install analyzer plugin for elasticsearch
+    shell: |
+      ./elasticsearch-plugin install analysis-icu
+      ./elasticsearch-plugin install analysis-kuromoji
+      ./elasticsearch-plugin install org.codelibs:elasticsearch-analysis-kuromoji-ipadic-neologd:7.1.0
+    args:
+      chdir: /usr/share/elasticsearch/bin
+  - name: Run elasticsearch service
+    systemd:
+      name: elasticsearch
+      state: started
+      enabled: yes
+  vars:
+    elasticsearch_rpm: "elasticsearch-7.2.0-x86_64.rpm"

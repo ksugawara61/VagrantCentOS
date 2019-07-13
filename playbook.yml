@@ -11,3 +11,4 @@
     - include: ./ansible/postgresql_setting.yml
     - include: ./ansible/redis_setting.yml
     - include: ./ansible/memcached_setting.yml
+    - include: ./ansible/elasticsearch_setting.yml
