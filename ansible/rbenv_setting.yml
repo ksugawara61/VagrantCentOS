@@ -12,6 +12,7 @@
       - ImageMagick
       - ImageMagick-devel
       - graphviz
+      - sqlite-devel
       state: latest
   - block:
     - name: Clone rbenv repository
