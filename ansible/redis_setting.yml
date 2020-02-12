@@ -2,9 +2,11 @@
 - block:
   - name: Install package redis
     yum:
-      name: http://rpms.remirepo.net/enterprise/7/remi/x86_64//redis-5.0.5-1.el7.remi.x86_64.rpm
+      name: http://rpms.remirepo.net/enterprise/7/remi/x86_64//{{ redis_rpm }}
   - name: Run redis service
     systemd:
       name: redis
       state: started
       enabled: yes
+  vars:
+    redis_rpm: "redis-5.0.7-1.el7.remi.x86_64.rpm"

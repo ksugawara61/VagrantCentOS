@@ -9,7 +9,7 @@ node_ip = '172.16.1.170'
 node_hostname = 'node001'
 node_vm_memory = 2048
 node_vm_cpus = 2
-node_port_array = [80, 443, 3000, 9200]
+node_port_array = [80, 443, 3000, 3001, 3002, 3003, 9200]
 
 Vagrant.configure(VAGRANT_API_VERSION) do |config|
   config.ssh.insert_key = false

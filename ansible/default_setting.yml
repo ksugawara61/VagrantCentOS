@@ -5,7 +5,7 @@
       name: Asia/Tokyo
   - name: Install package epel-release
     yum:
-      name: https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm
+      name: https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-12.noarch.rpm
   - name: Install standard package
     yum:
       name:

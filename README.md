@@ -40,8 +40,8 @@ CentOS上に以下のミドルウェアをインストールしています。
 | node | latest(LTS) | nodeパッケージ管理 |
 | MySQL | 5.7 | Relational Database |
 | Postgresql | latest | Relational Database |
-| Redis | 5.0.5 | KVS |
-| Memcached | 1.5.16 | KVS |
+| Redis | 5.0.7 | KVS |
+| Memcached | 1.5.22 | KVS |
 | Elasticsearch | 7.2.0 | 検索エンジン |
 
 #### Elasticsearch

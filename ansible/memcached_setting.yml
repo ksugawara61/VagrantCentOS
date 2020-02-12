@@ -2,9 +2,11 @@
 - block:
   - name: Install package memcached
     yum:
-      name: http://rpms.remirepo.net/enterprise/7/remi/x86_64//memcached-1.5.16-1.el7.remi.x86_64.rpm
+      name: http://rpms.remirepo.net/enterprise/7/remi/x86_64//{{ memcached_rpm }}
   - name: Run memcached service
     systemd:
       name: memcached
       state: started
       enabled: yes
+  vars:
+    memcached_rpm: "memcached-1.5.22-1.el7.remi.x86_64.rpm"
